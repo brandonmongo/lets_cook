@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link type="text/css" rel="stylesheet" href="css/materialize.min.css"  media="screen,projection"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <title>Let's Cook</title>
+</head>
+<body>
+    {% for recipe in recipes %}
+        <h3>{{ recipe.name }}</h3>
+            {% for ingredient in recipe.ingredients %}
+                <ol style="list-style-type:none">
+                    <li><span>{{ loop.index }}.</span>  {{ ingredient }}</li>
+                </ol>
+            {% endfor %}
+    {% endfor %}
+
+</body>
+</html>

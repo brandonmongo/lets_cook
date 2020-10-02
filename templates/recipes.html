@@ -1,18 +1,25 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Let's Cook</title>
-</head>
-<body>
-    {% for recipe in recipes %}
-        <h3>{{ recipe.name }}</h3>
-        {% for ingredient in recipe.ingredients %}
-            <ol style="list-style-type:none">
-                <li><span>{{ loop.index }}.</span>  {{ ingredient }}</li>
-            </ol>
-        {% endfor %}
-    {% endfor %}
-</body>
-</html>
+{% extends "base.html" %}
+
+{% block content %}
+ <div class="row">
+        <div class="col s1">
+        <img src="../assets/images/food_banner_2.jpg">
+        ../assets/images/food_banner_2.jpg
+        </div>
+
+        <div class="col s10">
+            {% for recipe in recipes %}
+                <h3>{{ recipe.name }}</h3>
+                {% for ingredient in recipe.ingredients %}
+                    <ol style="list-style-type:none">
+                        <li><span>{{ loop.index }}.</span>  {{ ingredient }}</li>
+                    </ol>
+                {% endfor %}
+            {% endfor %}
+        </div>
+
+        <div class="col s1 banner"></div>
+        </div>
+
+{% endblock %}
+
