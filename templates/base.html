@@ -6,16 +6,52 @@
     <link type="text/css" rel="stylesheet" href="css/materialize.min.css"  media="screen,projection"/>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css" integrity="sha512-1PKOgIY59xJ8Co8+NE6FZ+LOAZKjy+KY8iq0G4B3CyeY6wYHN3yt9PW0XpSriVlkMXe40PTKnXrLnZ9+fkDaog==" crossorigin="anonymous" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
-    <link rel="stylesheet" href="static/css/style.css" type="text/css"> <!--{{ url_for( 'static', filename='css/style.css') }} -->
+    <link rel="stylesheet" href="../static/css/style.css" type="text/css"> <!--{{ url_for( 'static', filename='css/style.css') }} -->
     {% block style %}
-    {% endblock}
+    {% endblock %}
     <title>Let's Cook</title>
 </head>
 <body>
+
+
+<!--Navbar-->
+    <nav>
+        <div class="nav-wrapper navbar">
+            <a href="{{ url_for('all_recipes') }}" class="brand-logo logo">Let's Cook</a>
+            <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="fas fa-hamburger"></i></a>
+            <ul class="right hide-on-med-and-down">
+                <li><a href="{{ url_for('all_recipes') }}">View Recipes</a></li>
+                <li><a href="#">Log in</a></li>
+                <li><a href="#">Add Recipe</a></li>
+                <li><a href="#">About Us</a></li>
+            </ul>
+        </div>
+    </nav>
+   <!--Moblie NavBar-->
+    <ul class="sidenav" id="mobile-demo">
+        <li><h4>Let's Cook</h4></li>
+        <li><a href="{{ url_for('all_recipes') }}">View Recipes</a></li>
+        <li><a href="#">Log in</a></li>
+        <li><a href="#">Add Recipe</a></li>
+        <li><a href="#">About Us</a></li>
+    </ul>
+
+    <header>
+        <div class="row hero-img">
+             
+        </div>
+    </header>
+
     <section> 
-       
-           {% block content %}
-           {% endblock %}
+       <div class="row">
+            <div class="col s1 m2 banner"></div>
+            <div class="col s10 m8">
+                {% block content %}
+                {% endblock %}
+            </div>
+            <div class="col s1 m2 banner"></div>
+       </div>
+           
        
     </section>
     

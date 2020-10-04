@@ -1,25 +1,15 @@
 {% extends "base.html" %}
 
 {% block content %}
- <div class="row">
-        <div class="col s1">
-        <img src="../assets/images/food_banner_2.jpg">
-        ../assets/images/food_banner_2.jpg
-        </div>
-
-        <div class="col s10">
-            {% for recipe in recipes %}
-                <h3>{{ recipe.name }}</h3>
-                {% for ingredient in recipe.ingredients %}
-                    <ol style="list-style-type:none">
-                        <li><span>{{ loop.index }}.</span>  {{ ingredient }}</li>
-                    </ol>
-                {% endfor %}
+ {% for recipe in recipes %}
+        <h3>{{ recipe.name }}</h3>
+            {% for ingredient in recipe.ingredients %}
+                <ol style="list-style-type:none">
+                    <li><span>{{ loop.index }}.</span>  {{ ingredient }}</li>
+                </ol>
             {% endfor %}
-        </div>
+    {% endfor %}
 
-        <div class="col s1 banner"></div>
-        </div>
 
 {% endblock %}
 
