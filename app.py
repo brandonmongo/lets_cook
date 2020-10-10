@@ -26,6 +26,10 @@ def all_recipes():
 
 @app.route("/add_recipe")
 def add_recipe():
+   ## if request.method == "POST":
+   ##     recipes = {
+   ##         "recipe_name": request.form.get("recipe_name")
+   ##     }
     return render_template("add_recipe.html")
 
 

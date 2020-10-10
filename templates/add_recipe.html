@@ -2,81 +2,124 @@
 
 {% block content %}
     <h3>Add Recipe</h3>
-
-    <div class="row">
-        <form class="col s12">
-            <div class="row">
-                <div class="input-field col s12">
-                    <i class="fas fa-scroll prefix"></i>
-                    <input id="recipe_name" type="text" name="recipe_name" class="validate">
-                    <label for="recipe_name">Name of the Recipe</label>
-                </div>
-            </div>
-            <div class="row">
-                <div class="input-field col s9">
-                    <i class="fas fa-egg prefix"></i>
-                    <input id="tools" type="text" name="tools" class="validate">
-                    <label for="tools">Add Tools Needed</label>       
-                </div>
-                <div class="col s3">
-                        <button class="btn waves-effect waves-light" type="submit" name="action">Add Tool
-                        </button>   
-                </div>
-            </div>   
-            <div class="row">
-                <div class="input-field col s9">
-                    <i class="fas fa-drumstick-bite prefix"></i>
-                    <input id="ingredients" type="text" name="ingredients" class="validate">
-                    <label for="ingredients">Ingredients</label>       
-                </div>
-                <div class="col s3">
-                        <button class="btn waves-effect waves-light" type="submit" name="action">Add Ingredients
-                        </button>   
-                </div>
-            </div>   
-            <div class="row">
-                <div class="input-field col s9">
-                    <i class="fas fa-list-ol prefix"></i>
-                    <textarea id="preparation" name="preparation" class="materialize-textarea"></textarea>
-                    <label for="preparation">Preparation Steps</label>
-                </div>
-                <div class="col s3">
-                        <button class="btn waves-effect waves-light" type="submit" name="action">Add Preparation Steps
-                        </button>   
-                </div>
-            </div>
-            <div class="row">
-                <div class="input-field col s12">
-                    <i class="fas fa-concierge-bell prefix"></i>
-                    <input id="serving" type="number" name="serving" class="validate">
-                    <label for="serving">Number of Serving For</label>
-                </div>
-            </div>
-            <div class="row">
-                <div class="input-field col s12">
-                    <i class="fas fa-layer-group prefix"></i>
-                    <select>
-                        <option value="" disabled selected>Select Difficulty</option>
-                        <option value="1">Easy</option>
-                        <option value="2">Medium</option>
-                        <option value="3">Hard</option>
-                    </select>
-                    <label>Select Difficulty</label>
-                </div>
-            </div>
-            <div class="row">
-                <div class="input-field col s12">
-                    <div class="switch"> 
-                        <i class="fas fa-carrot prefix"></i>
-                        <label for="vegetarian">
-                            Vegetarian
-                        <input type="checkbox" id="vegetarian" name="vegetarian">
-                        <span class="lever"></span>
-                        </label>
+    <div class="container">
+        <div class="row">
+            <form class="col s12" id="recipe-form">
+                <div class="row">
+                    <div class="input-field col s12">
+                        <i class="fas fa-scroll prefix"></i>
+                        <input id="recipe_name" type="text" name="recipe_name" class="validate">
+                        <label for="recipe_name">Name of the Recipe</label>
                     </div>
                 </div>
-            </div>
-        </form>
+                <!--<div class="row">
+                    <div class="input-field col s9">
+                        <i class="fas fa-egg prefix"></i>
+                        <input id="tools" type="text" name="tools" class="validate">
+                        <label for="tools">Add Tools Needed</label>       
+                    </div>
+                    <div class="col s3">
+                            <button class="btn waves-effect waves-light" type="submit" name="">Add Tool
+                            </button>   
+                    </div>
+                </div>    -->
+                <table id="tools-table" class="responsive-table">
+                    <tr>
+                        <i class="fas fa-egg prefix"></i>
+                        <td><input id="tools" type="text" name="tools[]" class="validate" placeholder="Add Tools Needed"> </td>
+                        <td>
+                            <button class="btn waves-effect waves-light" type="button" name="" id="add_tools">Add Tool
+                            </button>   
+                        </td>
+                    </tr>
+                </table>
+                <table id="ingred-table" class="responsive-table">
+                    <tr>
+                        <i class="fas fa-drumstick-bite prefix"></i>
+                        <td><input id="ingredient" type="text" name="ingredients[]" class="validate"></td>
+                        <td>
+                            <button type="button" class="btn waves-effect waves-light"  id="add_ing" name="" >Add Ingredients
+                            </button>
+                        </td>
+                    </tr>
+                </table>
+                <table id="prep-table" class="responsive-table">
+                    <tr>
+                        <i class="fas fa-list-ol prefix"></i>
+                        <td><textarea id="preparation" name="preparation[]" class="materialize-textarea">
+                        </textarea></td>
+                        <td>
+                            <button class="btn waves-effect waves-light" type="button" name="" id="add_prep">Add Preparation Steps
+                            </button>  
+                        </td>
+                    </tr>
+                </table>
+
+            
+
+
+                <!-- <div class="row">
+                    <div class="input-field col s9">
+                        <i class="fas fa-drumstick-bite prefix"></i>
+                    <input id="ingredients" type="text" name="ingredients" class="validate">
+                        <label for="ingredients">Ingredients</label>    
+                    </div>
+                    <div class="col s3">
+                            <button class="btn waves-effect waves-light"  id="add_ing" name="" formnovalidate>Add Ingredients
+                            </button>   
+                    </div>  
+                </div>   --> 
+
+                <!-- <div class="row">
+                    <div class="input-field col s9">
+                        <i class="fas fa-list-ol prefix"></i>
+                        <textarea id="preparation" name="preparation" class="materialize-textarea">
+                        </textarea>
+                        <label for="preparation">Preparation Steps</label>
+                    </div>
+                    <div class="col s3">
+                            <button class="btn waves-effect waves-light" type="button" name="action" formnovalidate>Add Preparation Steps
+                            </button>   
+                    </div>
+                </div> --> 
+                <div class="row">
+                    <div class="input-field col s12">
+                        <i class="fas fa-concierge-bell prefix"></i>
+                        <input id="serving" type="number" name="serving" class="validate">
+                        <label for="serving">Number of Serving For</label>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="input-field col s12">
+                        <i class="fas fa-layer-group prefix"></i>
+                        <select id="difficulty" name="difficulty">
+                            <option value="" disabled selected>Select Difficulty</option>
+                            <option value="1">Easy</option>
+                            <option value="2">Medium</option>
+                            <option value="3">Hard</option>
+                        </select>
+                        <label for="difficulty">Select Difficulty</label>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="input-field col s12">
+                        <div class="switch"> 
+                            <i class="fas fa-carrot prefix"></i>
+                            <label for="vegetarian">
+                                Vegetarian
+                            <input type="checkbox" id="vegetarian" name="vegetarian">
+                            <span class="lever"></span>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col s12 center-align">
+                    <button type="submit" class="btn waves-effect waves-light">Add Recipe</button> 
+                    </div>
+                </div>
+            </form>
+        </div>
     </div>
         
 {% endblock %}
