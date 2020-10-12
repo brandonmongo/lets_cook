@@ -2,7 +2,7 @@
 
 {% block content %}
  {% for recipe in recipes %}
-        <h3>{{ recipe.name }}</h3>
+        <h3>{{ recipe.recipe_name }}</h3>
             {% for ingredient in recipe.ingredients %}
                 <ol style="list-style-type:none">
                     <li><span>{{ loop.index }}.</span>  {{ ingredient }}</li>
