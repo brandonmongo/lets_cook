@@ -1,15 +1,37 @@
 {% extends "base.html" %}
 
 {% block content %}
- {% for recipe in recipes %}
-        <h3>{{ recipe.recipe_name }}</h3>
-            {% for ingredient in recipe.ingredients %}
-                <ol style="list-style-type:none">
-                    <li><span>{{ loop.index }}.</span>  {{ ingredient }}</li>
-                </ol>
-            {% endfor %}
-    {% endfor %}
+ <h3>All Recipes</h3>
 
+    <div class="row">
+ {% for recipe in recipes %}
+        
+        <div class="col s12 m6">
+            <div class="card medium sticky-action">
+                <div class="card-image">
+                    <img src="../static/assets/images/cook-366875_640.jpg" class="activator" height="255px">
+                </div>
+                <div class="card-content">
+                    <span class="card-title activator grey-text text-darken-4">{{ recipe.recipe_name }}<i class="fas fa-ellipsis-v right"></i></span>
+                    <p><a href="#">This is a link</a></p>
+                </div>
+
+                <div class="card-reveal">
+                    <span class="card-title activator grey-text text-darken-4">{{ recipe.recipe_name }}<i class="fas fa-times right"></i></span>
+                   {% for ingredient in recipe.ingredients %}
+                        <ul>
+                            <li>{{ ingredient }}</li>
+                        </ul>
+                   {% endfor %}
+                </div>
+                <div class="card-action">
+                    <a href="#">This is a link</a>
+                    <a href="#">This is a link</a>
+                </div>
+            </div>
+        </div> 
+ {% endfor %}
+    </div>
 
 {% endblock %}
 
