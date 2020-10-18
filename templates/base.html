@@ -22,7 +22,7 @@
             <ul class="right hide-on-med-and-down">
                 <li><a href="{{ url_for('all_recipes') }}">View Recipes</a></li>
                 <li><a href="{{ url_for('register') }}">Register</a></li>
-                <li><a href="#">Log in</a></li>
+                <li><a href="{{ url_for('login') }}">Log In</a></li>
                 <li><a href="{{ url_for('add_recipe') }}">Add Recipe</a></li>
                 <li><a href="#">About Us</a></li>
             </ul>
@@ -33,7 +33,7 @@
         <li><h4>Let's Cook</h4></li>
         <li><a href="{{ url_for('all_recipes') }}">View Recipes</a></li>
         <li><a href="{{ url_for('register') }}">Register</a></li>
-        <li><a href="#">Log in</a></li>
+        <li><a href="{{ url_for('login') }}">Log In</a></li>
         <li><a href="{{ url_for('add_recipe') }}">Add Recipe</a></li>
         <li><a href="#">About Us</a></li>
     </ul>
