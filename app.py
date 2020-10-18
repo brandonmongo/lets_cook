@@ -86,6 +86,12 @@ def profile(username):
 
     return redirect(url_for("login"))
 
+@app.route("/logout")
+def logout():
+    # remove cookie user
+    flash("You been logged out")
+    session.pop("current_user")
+    return redirect(url_for("login"))
 
 @app.route("/add_recipe", methods=["GET", "POST"])
 def add_recipe():

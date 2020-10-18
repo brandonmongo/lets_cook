@@ -23,8 +23,12 @@
                 <li><a href="{{ url_for('all_recipes') }}">View Recipes</a></li>
                 <li><a href="{{ url_for('register') }}">Register</a></li>
                 <li><a href="{{ url_for('login') }}">Log In</a></li>
-                <li><a href="{{ url_for('add_recipe') }}">Add Recipe</a></li>
-                <li><a href="{{ url_for('profile', username=session['current_user']) }}">Profile</a></li>
+                {% if session.current_user %}
+                    <li><a href="{{ url_for('logout') }}">Log Out</a></li>
+                    <li><a href="{{ url_for('add_recipe') }}">Add Recipe</a></li>
+                    <li><a href="{{ url_for('profile', username=session['current_user']) }}">Profile</a></li>
+                {% else %}
+                {% endif %} 
                 <li><a href="#">About Us</a></li>
             </ul>
         </div>
@@ -35,8 +39,12 @@
         <li><a href="{{ url_for('all_recipes') }}">View Recipes</a></li>
         <li><a href="{{ url_for('register') }}">Register</a></li>
         <li><a href="{{ url_for('login') }}">Log In</a></li>
-        <li><a href="{{ url_for('add_recipe') }}">Add Recipe</a></li>
-        <li><a href="{{ url_for('profile', username=session['current_user']) }}">Profile</a></li>
+        {% if session.current_user %}
+            <li><a href="{{ url_for('logout') }}">Log Out</a></li>
+            <li><a href="{{ url_for('add_recipe') }}">Add Recipe</a></li>
+            <li><a href="{{ url_for('profile', username=session['current_user']) }}">Profile</a></li>
+        {% else %}
+        {% endif %} 
         <li><a href="#">About Us</a></li>
     </ul>
 
