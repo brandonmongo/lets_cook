@@ -26,3 +26,16 @@
     margin: 0;
     
 }
+
+.flashes h5 {
+    line-height: 2;
+}
+
+.del {
+    margin-left: 10px;
+}
+
+.li-ingredient {
+    list-style-type: disc;
+   
+}

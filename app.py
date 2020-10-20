@@ -86,12 +86,14 @@ def profile(username):
 
     return redirect(url_for("login"))
 
+
 @app.route("/logout")
 def logout():
     # remove cookie user
     flash("You been logged out")
     session.pop("current_user")
     return redirect(url_for("login"))
+
 
 @app.route("/add_recipe", methods=["GET", "POST"])
 def add_recipe():
@@ -104,13 +106,28 @@ def add_recipe():
             "preparation": request.form.getlist("preparation[]"),
             "serving": request.form.get("serving"),
             "difficulty": request.form.get("difficulty"),
-            "vegetarian": vegetarian
+            "vegetarian": vegetarian,
+            "added_by": session["current_user"]
         }
         print(request.form.getlist("ingredients[]"))
         mongo.db.recipes.insert_one(recipe)
         recipes = mongo.db.recipes.find()
         return render_template("recipes.html", recipes=recipes)
     return render_template("add_recipe.html")
+
+
+@app.route("/view_recipe/<recipe_id>")
+def view_recipe(recipe_id):
+    viewed_recipe = mongo.db.recipes.find_one({"_id": ObjectId(recipe_id)})
+
+    return render_template("view_recipe.html", viewed_recipe=viewed_recipe)
+
+
+@app.route("/edit_recipe/<recipe_id>")
+def edit_recipe(recipe_id):
+    recipe_edit = mongo.db.recipes.find_one({"_id": ObjectId(recipe_id)})
+
+    return render_template("edit_recipe.html", recipe_edit=recipe_edit)
 
 
 if __name__ == "__main__":
