@@ -4,12 +4,12 @@
     <h3>Add Recipe</h3>
     <div class="container">
         <div class="row">
-            <form class="col s12" id="recipe-form" method="POST" action="{{ url_for('add_recipe') }}">
+            <form class="col s12" id="recipe-form" method="POST" action="{{ url_for('edit_recipe', recipe_id=viewed_recipe._id) }}">
             <!--Add recipe name-->
                 <div class="row">
                     <div class="input-field col s12">
                         <i class="fas fa-scroll prefix"></i>
-                        <input id="recipe_name" type="text" name="recipe_name" class="validate" required>
+                        <input id="recipe_name" type="text" name="recipe_name" class="validate" value="{{ viewed_recipe.recipe_name }}" required>
                         <label for="recipe_name">Name of the Recipe</label>
                     </div>
                 </div>
@@ -28,22 +28,35 @@
                 <table id="tools-table" class="responsive-table">
                     <tr>
                         <i class="fas fa-egg prefix"></i>
-                        <td><input id="tools" type="text" name="tools[]" class="validate" placeholder="Add Tools Needed" required> </td>
+                        <td><input id="tools" type="text" name="tools[]" class="validate" placeholder="Add Tools Needed" value="{{ viewed_recipe.tools[0] }}" required> </td>
                         <td>
-                            <button class="btn waves-effect waves-light" type="button" id="add_tools">Add Tool
+                            <button class="btn waves-effect waves-light right" type="button" id="add_tools">Add Tool
                             </button>   
                         </td>
+                        {% for tool in viewed_recipe.tools[1:] %}
+                        <tr id="tooltb1"> 
+                            <td><input id="tools" type="text" name="tools[]" class="validate" value="{{ tool }}" required/></td>
+                            <td><button class="btn waves-effect waves-light btn-remove" type="button" id="1">X</button></td>
+                        </tr>
+                        {% endfor %}
+                        
                     </tr>
                 </table>
                 <!--Add Ingredients-->
                 <table id="ingred-table" class="responsive-table">
                     <tr>
                         <i class="fas fa-drumstick-bite prefix"></i>
-                        <td><input id="ingredient" type="text" name="ingredients[]" class="validate" placeholder="Add Ingredients" required></td>
+                        <td><input id="ingredient" type="text" name="ingredients[]" class="validate" placeholder="Add Ingredients" value="{{ viewed_recipe.ingredients[0] }}" required></td>
                         <td>
-                            <button type="button" class="btn waves-effect waves-light"  id="add_ing" >Add Ingredients
+                            <button type="button" class="btn waves-effect waves-light right"  id="add_ing" >Add Ingredients
                             </button>
                         </td>
+                        {% for ingredient in viewed_recipe.ingredients[1:] %}
+                            <tr id="row1"> 
+                                <td><input id="ingredient" type="text" name="ingredients[]" class="validate" value="{{ ingredient }}" required/></td>
+                                <td><button type="button" class="btn waves-effect waves-light btn-remove" id="1">X</button></td>
+                            </tr>
+                        {% endfor %}
                     </tr>
                 </table>
                 <!--Add Preparations Step-->
@@ -51,11 +64,18 @@
                     <tr>
                         <i class="fas fa-list-ol prefix"></i>
                         <td><textarea id="preparation" name="preparation[]" class="materialize-textarea" placeholder="Add Preparation Step" required>
+                        {{- viewed_recipe.preparation[0] -}}
                         </textarea></td>
                         <td>
-                            <button class="btn waves-effect waves-light" type="button"  id="add_prep">Add Preparation Steps
+                            <button class="btn waves-effect waves-light right" type="button"  id="add_prep">Add Preparation Steps
                             </button>  
                         </td>
+                        {% for step in viewed_recipe.preparation[1:] %}
+                            <tr id="preptb1">
+                                <td><textarea id="preparation" name="preparation[]" class="materialize-textarea" required>{{ step }}</textarea></td>
+                                <td><button class="btn waves-effect waves-light btn-remove" type="button" id="1">X</button></td>
+                            </tr>
+                        {% endfor %}
                     </tr>
                 </table>
 
@@ -87,7 +107,7 @@
                 <div class="row">
                     <div class="input-field col s12">
                         <i class="fas fa-concierge-bell prefix"></i>
-                        <input id="serving" type="number" name="serving" class="validate" required>
+                        <input id="serving" type="number" name="serving" class="validate" value="{{ viewed_recipe.serving }}" required>
                         <label for="serving">Number of Serving For</label>
                     </div>
                 </div>
@@ -96,12 +116,19 @@
                     <div class="input-field col s12">
                         <i class="fas fa-layer-group prefix"></i>
                         <select id="difficulty" name="difficulty" required>
-                            <option value="" disabled selected>Select Difficulty</option>
-                            <option value="Easy">Easy</option>
-                            <option value="Medium">Medium</option>
-                            <option value="Hard">Hard</option>
+                            {% if viewed_recipe.difficulty %}
+                                <option value="{{ viewed_recipe.difficulty }}" selected>{{ viewed_recipe.difficulty }}</option>
+                                    <option value="Easy">Easy</option>
+                                    <option value="Medium">Medium</option>
+                                    <option value="Hard">Hard</option>
+                            {% else %}
+                                    <option value="" disabled selected>Select Difficulty</option>
+                                    <option value="Easy">Easy</option>
+                                    <option value="Medium">Medium</option>
+                                    <option value="Hard">Hard</option>
+                                <label for="difficulty">Select Difficulty</label>
+                            {% endif %}
                         </select>
-                        <label for="difficulty">Select Difficulty</label>
                     </div>
                 </div>
                 <!--Add Vegetarian Toggle-->
@@ -110,8 +137,12 @@
                         <div class="switch"> 
                             <i class="fas fa-carrot prefix"></i>
                             <label for="vegetarian">
-                                Vegetarian
+                            {% if viewed_recipe.vegetarian == "yes" %}
+                            <input type="checkbox" id="vegetarian" name="vegetarian" checked>
+                            {% else %}
                             <input type="checkbox" id="vegetarian" name="vegetarian">
+                            {% endif %}
+                                Vegetarian
                             <span class="lever"></span>
                             </label>
                         </div>
@@ -119,7 +150,8 @@
                 </div>
                 <div class="row">
                     <div class="col s12 center-align">
-                    <button type="submit" class="btn waves-effect waves-light">Add Recipe</button> 
+                        <a href="#"><button type="submit" class="btn waves-effect waves-light">Edit Recipe</button></a>
+                        <a href="{{ url_for('all_recipes') }}" class="btn red accent-4 del">Cancel</a>
                     </div>
                 </div>
             </form>

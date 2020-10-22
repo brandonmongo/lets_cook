@@ -46,5 +46,8 @@ $(document).ready(function(){
             });
         });
     }
-
+    $(".btn-remove").click(function(){
+        $(this).closest("tr").remove();
+        console.log("hello")
+    });
   });
