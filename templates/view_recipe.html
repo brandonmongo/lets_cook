@@ -42,8 +42,10 @@
         </div>
         <div class="row">
             <div class="col s12 center-align">
+            {% if session.current_user == viewed_recipe.added_by or session.current_user == 'admin' %}
                 <a href="{{ url_for('edit_recipe', recipe_id=viewed_recipe._id) }}" class="btn-large waves-effect waves-light light-green accent-3">Edit</a>
-                <a href="#" class="btn-large red accent-4 del">Delete</a>
+                <a href="{{ url_for('delete_recipe', recipe_id=viewed_recipe._id) }}" class="btn-large red accent-4 del">Delete</a>
+            {% endif %}
             </div>
         </div>
 </div>

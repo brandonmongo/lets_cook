@@ -39,3 +39,13 @@
     list-style-type: disc;
    
 }
+
+.li-center {
+    font-size: 30px;
+    margin: auto;
+    width: 50%;
+}
+
+.page-footer {
+    background-color: #0B7A86; 
+}

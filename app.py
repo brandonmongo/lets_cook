@@ -111,6 +111,7 @@ def add_recipe():
         }
         print(request.form.getlist("ingredients[]"))
         mongo.db.recipes.insert_one(recipe)
+        flash("Recipe added")
         recipes = mongo.db.recipes.find()
         return render_template("recipes.html", recipes=recipes)
     return render_template("add_recipe.html")
@@ -143,6 +144,13 @@ def edit_recipe(recipe_id):
 
     viewed_recipe = mongo.db.recipes.find_one({"_id": ObjectId(recipe_id)})
     return render_template("edit_recipe.html", viewed_recipe=viewed_recipe)
+
+
+@app.route("/delete_recipe/<recipe_id>")
+def delete_recipe(recipe_id):
+    mongo.db.recipes.remove({"_id": ObjectId(recipe_id)})
+    flash("Recipe has been deleted")
+    return redirect(url_for("all_recipes"))
 
 
 if __name__ == "__main__":
