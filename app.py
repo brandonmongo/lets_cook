@@ -42,7 +42,7 @@ def register():
         }
         mongo.db.users.insert_one(user)
 
-        # inter new session cookie
+        # inter new session into cookie
         session["current_user"] = request.form.get("user")
         flash("Registration complete")
         return redirect(url_for("profile", username=session["current_user"]))
@@ -125,8 +125,23 @@ def view_recipe(recipe_id):
 
 @app.route("/edit_recipe/<recipe_id>", methods=["GET", "POST"])
 def edit_recipe(recipe_id):
+    if request.method == "POST":
+        vegetarian = "yes" if request.form.get("vegetarian") else "no"
+        edited_recipe = {
+            "recipe_name": request.form.get("recipe_name"),
+            "tools": request.form.getlist("tools[]"),
+            "ingredients": request.form.getlist("ingredients[]"),
+            "preparation": request.form.getlist("preparation[]"),
+            "serving": request.form.get("serving"),
+            "difficulty": request.form.get("difficulty"),
+            "vegetarian": vegetarian,
+            "added_by": session["current_user"]
+        }
+        mongo.db.recipes.update({"_id": ObjectId(recipe_id)}, edited_recipe)
+        flash("Recipe Successfully Edited")
+        return redirect(url_for("all_recipes"))
+
     viewed_recipe = mongo.db.recipes.find_one({"_id": ObjectId(recipe_id)})
-    
     return render_template("edit_recipe.html", viewed_recipe=viewed_recipe)
 
 
