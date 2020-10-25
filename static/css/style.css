@@ -24,7 +24,12 @@
     background-size: 100% 100%;
     background-repeat: no-repeat;
     margin: 0;
-    
+    position: relative;
+}
+
+.search {
+    position: absolute;
+    top: 25%;
 }
 
 .flashes h5 {
@@ -48,4 +53,8 @@
 
 .page-footer {
     background-color: #0B7A86; 
+}
+
+.search {
+    background: rgba(207, 216, 220, 0.6);
 }
