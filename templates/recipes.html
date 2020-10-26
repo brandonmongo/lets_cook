@@ -1,9 +1,9 @@
 {% extends "base.html" %}
 
 {% block content %}
- <h3>All Recipes</h3>
+ <h3 class="font-change">All Recipes</h3>
 
-    <div class="row">
+    <div class="row row-fix">
  {% for recipe in recipes %}
         <div class="col s12 m6">
             <div class="card medium sticky-action">
@@ -17,8 +17,9 @@
 
                 <div class="card-reveal">
                     <span class="card-title activator grey-text text-darken-4">{{ recipe.recipe_name }}<i class="fas fa-times right"></i></span>
+                    <h6>Ingredients:</h6>
                    {% for ingredient in recipe.ingredients %}
-                        <ul class="li-ingredient">
+                        <ul class="browser-default">
                             <li>{{ ingredient }}</li>
                         </ul>
                    {% endfor %}

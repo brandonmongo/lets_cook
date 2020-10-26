@@ -7,10 +7,10 @@
 
         <div class="row">
             <div class="col s12 m5">
-                <div class="card-panel">
-                        <span class="card-title center-align"><h5>Ingredients</h5></span>
+                <div class="card-panel recipe-card ingred-card">
+                        <span class="card-title center-align"><h5 class="card-heading">Ingredients</h5></span>
                         {% for ingredient in viewed_recipe.ingredients %}
-                            <ul class="li-ingredient">
+                            <ul class="browser-default">
                                 <li>{{ ingredient }}</li>
                             </ul>
                         {% endfor %}
@@ -18,10 +18,10 @@
             </div>
 
             <div class="col s12 m5 offset-m2">
-                <div class="card-panel">
-                    <span class="card-title">Tools</span>
+                <div class="card-panel recipe-card tool-card">
+                    <span class="card-title center-align"><h5 class="card-heading">Tools</h5></span>
                     {% for tool in viewed_recipe.tools %}
-                        <ul>
+                        <ul class="browser-default">
                             <li>{{ tool }}</li>
                         </ul>
                     {% endfor %}
@@ -30,8 +30,8 @@
         </div>
         <div class="row">
             <div class="col s12 m12">
-                <div class="card-panel teal">
-                        <span class="card-title">Preparation Steps</span>
+                <div class="card-panel recipe-card prep-card">
+                        <span class="card-title center-align"><h5 class="card-heading">Preparation Steps</h5></span>
                         {% for step in viewed_recipe.preparation %}
                         <ul>
                             <li><span>{{ loop.index }}</span>. {{ step }}</li>
