@@ -50,4 +50,34 @@ $(document).ready(function(){
         $(this).closest("tr").remove();
         console.log("hello")
     });
+
+    // pagination
+    pagination()
+    function pagination() {
+        pageSize = 2
+
+        let pageCount =  $(".recipe-content").length / pageSize;
+
+        for(var i = 0 ; i<pageCount;i++) {
+            $(".add-page").append('<li class="waves-effect"><a href="#!">'+(i+1)+'</a></li>');
+        }
+
+            $(".add-page li").first().addClass("active")
+        showPage = function(page) {
+            $(".recipe-content").hide();
+            $(".recipe-content").each(function(n) {
+                if (n >= pageSize * (page - 1) && n < pageSize * page)
+                    $(this).show();
+            });        
+        }
+
+            showPage(1);
+
+        $(".add-page li").click(function() {
+            $(".add-page li").removeClass("active");
+            $(this).addClass("active");
+            showPage(parseInt($(this).text())) 
+        });
+    }
+    
   });

@@ -5,7 +5,7 @@
 
     <div class="row row-fix">
  {% for recipe in recipes %}
-        <div class="col s12 m6">
+        <div class="col s12 m6 recipe-content">
             <div class="card medium sticky-action">
                 <div class="card-image">
                     <img src="../static/assets/images/cook-366875_640.jpg" class="activator" height="255px">
@@ -30,6 +30,15 @@
             </div>
         </div> 
  {% endfor %}
+    </div>
+
+    <div class="row center">
+        <div class="col s12">
+            <ul class="pagination add-page">
+                    
+            </ul>
+        </div>
+        
     </div>
 
 {% endblock %}

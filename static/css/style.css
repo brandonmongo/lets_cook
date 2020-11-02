@@ -101,6 +101,9 @@ h4 {
    min-width: 100%;
 }
 
+.pagination li.active {
+    background-color: #0B7A86;
+}
 
 @media screen and (max-width: 992px) {
     table.responsive-table tbody tr {
