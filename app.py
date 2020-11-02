@@ -46,8 +46,13 @@ def register():
         session["current_user"] = request.form.get("user")
         flash("Registration complete")
         return redirect(url_for("profile", username=session["current_user"]))
-
-    return render_template("register.html")
+    if str(request.url_rule) in ["/register"]:
+        title = "Register Page"
+        button = "Register"
+        form_action = "url_for('register')"
+    print(app.route)
+    return render_template(
+        "login_or_reg.html", title=title, button=button, form_action=form_action)
 
 
 @app.route("/login", methods=["GET", "POST"])
@@ -73,7 +78,12 @@ def login():
             # if username is invaild
             flash("Incorrect Username/Password")
             return redirect(url_for("login"))
-    return render_template("login.html")
+    if str(request.url_rule) in ["/login"]:
+        title = "Log In"
+        button = "Log In"
+        form_action = "url_for('login')"
+    return render_template(
+        "login_or_reg.html", title=title, button=button, form_action=form_action)
 
 
 @app.route("/profile/<username>", methods=["GET", "POST"])
@@ -82,7 +92,8 @@ def profile(username):
         {"username": session["current_user"]})["username"]
 
     if session["current_user"]:
-        return render_template("profile.html", username=username)
+        recipes = mongo.db.recipes.find()
+        return render_template("profile.html", username=username, recipes=recipes)
 
     return redirect(url_for("login"))
 

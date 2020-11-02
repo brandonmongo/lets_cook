@@ -9,5 +9,32 @@
             </div>
         </div>
     </div>
-    
+    {% for recipe in recipes %}
+        {% if recipe.added_by == session["current_user"] %}
+            <div class="col s12 m6">
+                <div class="card medium sticky-action">
+                    <div class="card-image">
+                        <img src="../static/assets/images/cook-366875_640.jpg" class="activator" height="255px">
+                    </div>
+                    <div class="card-content">
+                        <span class="card-title activator grey-text text-darken-4">{{ recipe.recipe_name }}<i class="fas fa-ellipsis-v right"></i></span>
+                        <p>Added by: {{ recipe.added_by }}</p>
+                    </div>
+
+                    <div class="card-reveal">
+                        <span class="card-title activator grey-text text-darken-4">{{ recipe.recipe_name }}<i class="fas fa-times right"></i></span>
+                        <h6>Ingredients:</h6>
+                    {% for ingredient in recipe.ingredients %}
+                            <ul class="browser-default">
+                                <li>{{ ingredient }}</li>
+                            </ul>
+                    {% endfor %}
+                    </div>
+                    <div class="card-action">
+                        <a href="{{ url_for('view_recipe', recipe_id=recipe._id) }}" class="btn-small light-green accent-3">View</a>
+                    </div>
+                </div>
+            </div> 
+        {% endif %}
+    {% endfor %}
 {% endblock %}

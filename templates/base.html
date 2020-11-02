@@ -15,35 +15,37 @@
 
 
 <!--Navbar-->
-    <nav>
-        <div class="nav-wrapper navbar">
-            <a href="{{ url_for('all_recipes') }}" class="brand-logo logo">Let's Cook</a>
-            <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="fas fa-hamburger"></i></a>
-            <ul class="right hide-on-med-and-down">
-                <li><a href="{{ url_for('all_recipes') }}">View Recipes</a></li>
-                {% if session.current_user %}
-                    <li><a href="{{ url_for('add_recipe') }}">Add A Recipe</a></li>
-                    <li><a href="{{ url_for('profile', username=session['current_user']) }}">Profile</a></li>
-                    <li><a href="{{ url_for('logout') }}">Log Out</a></li>
-                {% else %}
-                    <li><a href="{{ url_for('register') }}">Register</a></li>
-                    <li><a href="{{ url_for('login') }}">Log In</a></li>
-                {% endif %} 
-                <li><a href="#">About Us</a></li>
-            </ul>
-        </div>
-    </nav>
+    <div class="navbar-fixed">
+        <nav>
+            <div class="nav-wrapper navbar navbar-fixed">
+                <a href="{{ url_for('all_recipes') }}" class="brand-logo logo">Let's Cook</a>
+                <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="fas fa-hamburger"></i></a>
+                <ul class="right hide-on-med-and-down">
+                    <li><a href="{{ url_for('all_recipes') }}">View Recipes</a></li>
+                    {% if session.current_user %}
+                        <li><a href="{{ url_for('add_recipe') }}">Add A Recipe</a></li>
+                        <li><a href="{{ url_for('profile', username=session['current_user']) }}">Profile</a></li>
+                        <li><a href="{{ url_for('logout') }}">Log Out</a></li>
+                    {% else %}
+                        <li><a href="{{ url_for('register') }}">Register</a></li>
+                        <li><a href="{{ url_for('login') }}">Log In</a></li>
+                    {% endif %} 
+                    <li><a href="#">About Us</a></li>
+                </ul>
+            </div>
+        </nav>
+    </div>
    <!--Moblie NavBar-->
     <ul class="sidenav" id="mobile-demo">
         <li><h4>Let's Cook</h4></li>
         <li><a href="{{ url_for('all_recipes') }}">View Recipes</a></li>
-        <li><a href="{{ url_for('register') }}">Register</a></li>
-        <li><a href="{{ url_for('login') }}">Log In</a></li>
         {% if session.current_user %}
-            <li><a href="{{ url_for('logout') }}">Log Out</a></li>
-            <li><a href="{{ url_for('add_recipe') }}">Add Recipe</a></li>
+            <li><a href="{{ url_for('add_recipe') }}">Add A Recipe</a></li>
             <li><a href="{{ url_for('profile', username=session['current_user']) }}">Profile</a></li>
+            <li><a href="{{ url_for('logout') }}">Log Out</a></li>
         {% else %}
+            <li><a href="{{ url_for('register') }}">Register</a></li>
+            <li><a href="{{ url_for('login') }}">Log In</a></li>
         {% endif %} 
         <li><a href="#">About Us</a></li>
     </ul>
@@ -57,7 +59,7 @@
                                 <div class="input-field col s12">
                                     <i class="fas fa-search prefix"></i>
                                     <input type="text" name="query" id="query" required>
-                                    <label for="query" class="black-text">Search Recipe or Ingredient</label>
+                                    <label for="query" class="black-text search-label">Search Recipe or Ingredients</label>
                                 </div>
                                 <div class="col s12 center-align">
                                     <a href="{{ url_for('all_recipes') }}" class="btn red accent-4">Reset</a>
@@ -85,9 +87,9 @@
         
         
             
-       <div class="row row-fix">
-            <div class="col s1 banner"></div>
-            <div class="col s10">
+       <div class="row row-fix banner">
+            
+            <div class="col s10 back-white offset-s1">
                 <section>
                     {% with messages = get_flashed_messages() %}
                             {% if messages %}
@@ -102,12 +104,12 @@
                 {% block content %}
                 {% endblock %}
             </div>
-            <div class="col s1 banner"></div>
+            
        </div>
     </main>
     <footer class="page-footer">
         <div class="row row-fix">
-            <div class="col m4 offset-m4">
+            <div class="col s12 m4 offset-m4">
                 <h5 class="white-text center-align">Share your Recipes</h5>
                 <ul class="valign-wrapper center-align li-center">
                     <li class="col s4"> 

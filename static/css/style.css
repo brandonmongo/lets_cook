@@ -4,8 +4,13 @@ body {
     font-family: "Roboto", sans-serif
 }
 
+.back-white {
+    background-color: white;
+}
+
 .banner {
-  height: 151vh;
+  height: 100%;
+  /*min-height: 150vh;*/
   background-image: url("../assets/images/food_banner_2.jpg");
   background-size: contain;
   background-repeat: repeat;
@@ -35,16 +40,18 @@ h4 {
 
 .hero-img {
     width: 100%;
-    height: 60vh;
+    /*height: 60vh;*/
     background: url("../assets/images/BBQ-Sharing-Platter-Hero.jpg");
-    background-size: 100% 100%;
+    background-size: cover;
+    background-position: center;
+    padding: 100px 0px;
     background-repeat: no-repeat;
     margin: 0;
-    position: relative;
+    
 }
 
 .search {
-    position: absolute;
+   
     top: 25%;
 }
 
@@ -88,4 +95,25 @@ h4 {
 
 .search {
     background: rgba(207, 216, 220, 0.6);
+}
+
+.table-width {
+   min-width: 100%;
+}
+
+
+@media screen and (max-width: 992px) {
+    table.responsive-table tbody tr {
+        display: block;
+    }  
+    .search-label {
+        font-size: 0.85rem !important;
+    }
+
+}
+
+@media screen and (min-width: 992px) {
+    .input-block {
+        width: 405px !important;
+    }
 }

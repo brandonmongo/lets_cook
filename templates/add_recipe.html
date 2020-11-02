@@ -26,9 +26,9 @@
                 </div>    -->
                 <!--Add Tools-->
                 <table id="tools-table" class="responsive-table">
-                    <tr>
+                    <tr class="table-width">
                         <i class="fas fa-egg prefix"></i>
-                        <td><input id="tools" type="text" name="tools[]" class="validate" placeholder="Add Tools Needed" required> </td>
+                        <td><input id="tools" type="text" name="tools[]" class="validate input-block" placeholder="Add Tools Needed" required></td>
                         <td>
                             <button class="btn waves-effect waves-light" type="button" id="add_tools">Add Tool
                             </button>   
@@ -37,20 +37,20 @@
                 </table>
                 <!--Add Ingredients-->
                 <table id="ingred-table" class="responsive-table">
-                    <tr>
+                    <tr class="table-width">
                         <i class="fas fa-drumstick-bite prefix"></i>
-                        <td><input id="ingredient" type="text" name="ingredients[]" class="validate" placeholder="Add Ingredients" required></td>
+                        <td><input id="ingredient" type="text" name="ingredients[]" class="validate input-block" placeholder="Add Ingredients" required></td>
                         <td>
-                            <button type="button" class="btn waves-effect waves-light"  id="add_ing" >Add Ingredients
+                            <button type="button" class="btn waves-effect waves-light"  id="add_ing" >Add Ingredient
                             </button>
                         </td>
                     </tr>
                 </table>
                 <!--Add Preparations Step-->
                 <table id="prep-table" class="responsive-table">
-                    <tr>
+                    <tr class="table-width">
                         <i class="fas fa-list-ol prefix"></i>
-                        <td><textarea id="preparation" name="preparation[]" class="materialize-textarea" placeholder="Add Preparation Step" required></textarea>
+                        <td><textarea id="preparation" name="preparation[]" class="materialize-textarea" placeholder="Add Preparation Step" required cols="70"></textarea>
                         </td>
                         <td>
                             <button class="btn waves-effect waves-light" type="button"  id="add_prep">Add Preparation Steps

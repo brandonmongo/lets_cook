@@ -2,7 +2,7 @@
 
 {% block content %}
     <div>
-        <h4>Log In</h4>
+        <h4>{{ title }}</h4>
     </div>
 
     <div class="row">
@@ -25,12 +25,21 @@
        
                 <div class="row">
                     <div class="col s12 center-align">
-                        <button type="submit" class="btn waves-effect waves-light">Log In <i class="fas fa-cookie-bite"></i></button> 
+                        <button type="submit" class="btn waves-effect waves-light">{{ button }} <i class="fas fa-cookie-bite"></i></button> 
                     </div>
                 </div>
             </div>
         </form>
     </div>
+    {% if title == "Register Page" %}
+     <div class="row">
+        <div class="col s12">
+            <p class="center-align">Already have Account?
+                <a href="{{ url_for('login') }}">Log In</a>
+            </p>
+        </div>
+    </div>
+    {% else %}
     <div class="row">
         <div class="col s12">
             <p class="center-align">Don't have Account?
@@ -38,4 +47,6 @@
             </p>
         </div>
     </div>
+   
+    {% endif %}
 {% endblock %}

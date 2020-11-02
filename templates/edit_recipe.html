@@ -26,16 +26,16 @@
                 </div>    -->
                 <!--Add Tools-->
                 <table id="tools-table" class="responsive-table">
-                    <tr>
+                    <tr class="table-width">
                         <i class="fas fa-egg prefix"></i>
-                        <td><input id="tools" type="text" name="tools[]" class="validate" placeholder="Add Tools Needed" value="{{ viewed_recipe.tools[0] }}" required> </td>
+                        <td><input id="tools" type="text" name="tools[]" class="validate  input-block" placeholder="Add Tools Needed" value="{{ viewed_recipe.tools[0] }}" required> </td>
                         <td>
                             <button class="btn waves-effect waves-light right" type="button" id="add_tools">Add Tool
                             </button>   
                         </td>
                         {% for tool in viewed_recipe.tools[1:] %}
                         <tr id="tooltb1"> 
-                            <td><input id="tools" type="text" name="tools[]" class="validate" value="{{ tool }}" required/></td>
+                            <td><input id="tools" type="text" name="tools[]" class="validate input-block" value="{{ tool }}" required/></td>
                             <td><button class="btn waves-effect waves-light btn-remove" type="button" id="1">X</button></td>
                         </tr>
                         {% endfor %}
@@ -44,16 +44,16 @@
                 </table>
                 <!--Add Ingredients-->
                 <table id="ingred-table" class="responsive-table">
-                    <tr>
+                    <tr class="table-width">
                         <i class="fas fa-drumstick-bite prefix"></i>
-                        <td><input id="ingredient" type="text" name="ingredients[]" class="validate" placeholder="Add Ingredients" value="{{ viewed_recipe.ingredients[0] }}" required></td>
+                        <td><input id="ingredient" type="text" name="ingredients[]" class="validate input-block" placeholder="Add Ingredients" value="{{ viewed_recipe.ingredients[0] }}" required></td>
                         <td>
                             <button type="button" class="btn waves-effect waves-light right"  id="add_ing" >Add Ingredients
                             </button>
                         </td>
                         {% for ingredient in viewed_recipe.ingredients[1:] %}
                             <tr id="row1"> 
-                                <td><input id="ingredient" type="text" name="ingredients[]" class="validate" value="{{ ingredient }}" required/></td>
+                                <td><input id="ingredient" type="text" name="ingredients[]" class="validate input-block" value="{{ ingredient }}" required/></td>
                                 <td><button type="button" class="btn waves-effect waves-light btn-remove" id="1">X</button></td>
                             </tr>
                         {% endfor %}
@@ -61,9 +61,9 @@
                 </table>
                 <!--Add Preparations Step-->
                 <table id="prep-table" class="responsive-table">
-                    <tr>
+                    <tr class="table-width">
                         <i class="fas fa-list-ol prefix"></i>
-                        <td><textarea id="preparation" name="preparation[]" class="materialize-textarea" placeholder="Add Preparation Step" required>
+                        <td><textarea id="preparation" name="preparation[]" class="materialize-textarea" placeholder="Add Preparation Step" required cols="70">
                         {{- viewed_recipe.preparation[0] -}}
                         </textarea></td>
                         <td>
