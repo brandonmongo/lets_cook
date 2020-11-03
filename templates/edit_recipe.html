@@ -63,7 +63,7 @@
                 <table id="prep-table" class="responsive-table">
                     <tr class="table-width">
                         <i class="fas fa-list-ol prefix"></i>
-                        <td><textarea id="preparation" name="preparation[]" class="materialize-textarea" placeholder="Add Preparation Step" required cols="70">
+                        <td><textarea id="preparation" name="preparation[]" class="materialize-textarea validate" placeholder="Add Preparation Step" required cols="70">
                         {{- viewed_recipe.preparation[0] -}}
                         </textarea></td>
                         <td>
@@ -72,7 +72,7 @@
                         </td>
                         {% for step in viewed_recipe.preparation[1:] %}
                             <tr id="preptb1">
-                                <td><textarea id="preparation" name="preparation[]" class="materialize-textarea" required>{{ step }}</textarea></td>
+                                <td><textarea id="preparation" name="preparation[]" class="materialize-textarea validate" required>{{ step }}</textarea></td>
                                 <td><button class="btn waves-effect waves-light btn-remove" type="button" id="1">X</button></td>
                             </tr>
                         {% endfor %}

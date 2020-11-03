@@ -12,7 +12,7 @@
     {% for recipe in recipes %}
         {% if recipe.added_by == session["current_user"] %}
             <div class="col s12 m6">
-                <div class="card medium sticky-action">
+                <div class="card medium sticky-action recipe-content">
                     <div class="card-image">
                         <img src="../static/assets/images/cook-366875_640.jpg" class="activator" height="255px">
                     </div>
@@ -32,9 +32,19 @@
                     </div>
                     <div class="card-action">
                         <a href="{{ url_for('view_recipe', recipe_id=recipe._id) }}" class="btn-small light-green accent-3">View</a>
+                        {% if recipe.vegetarian == "yes" %}
+                        <span class="right">Vegetarian</span>
+                        {% endif %}
                     </div>
                 </div>
             </div> 
         {% endif %}
     {% endfor %}
+    <div class="row center">
+        <div class="col s12">
+            <ul class="pagination add-page">
+                    
+            </ul>
+        </div>
+    </div>
 {% endblock %}

@@ -47,12 +47,8 @@ def register():
         flash("Registration complete")
         return redirect(url_for("profile", username=session["current_user"]))
     if str(request.url_rule) in ["/register"]:
-        title = "Register Page"
-        button = "Register"
-        form_action = "url_for('register')"
-    print(app.route)
-    return render_template(
-        "login_or_reg.html", title=title, button=button, form_action=form_action)
+        print(app.route)
+    return render_template("register.html")
 
 
 @app.route("/login", methods=["GET", "POST"])
@@ -79,11 +75,8 @@ def login():
             flash("Incorrect Username/Password")
             return redirect(url_for("login"))
     if str(request.url_rule) in ["/login"]:
-        title = "Log In"
-        button = "Log In"
-        form_action = "url_for('login')"
-    return render_template(
-        "login_or_reg.html", title=title, button=button, form_action=form_action)
+        print(app.route)
+    return render_template("login.html")
 
 
 @app.route("/profile/<username>", methods=["GET", "POST"])

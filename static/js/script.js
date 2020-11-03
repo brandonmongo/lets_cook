@@ -38,7 +38,7 @@ $(document).ready(function(){
         let i = 1
         $("#add_prep").click(function(){
             i++;
-            $("#prep-table").append('<tr id="preptb'+i+'"><td><textarea id="preparation" name="preparation[]" class="materialize-textarea" required></textarea></td> <td><button class="btn waves-effect waves-light btn-remove" type="button"  id="'+i+'">X</button></td></tr>');
+            $("#prep-table").append('<tr id="preptb'+i+'"><td><textarea id="preparation" name="preparation[]" class="materialize-textarea validate" required></textarea></td> <td><button class="btn waves-effect waves-light btn-remove" type="button"  id="'+i+'">X</button></td></tr>');
              $(document).on('click', '.btn-remove', function() {
                 let button_id = $(this).attr("id");
                 $("#preptb"+button_id+"").remove();
@@ -54,7 +54,7 @@ $(document).ready(function(){
     // pagination
     pagination()
     function pagination() {
-        pageSize = 2
+        pageSize = 6
 
         let pageCount =  $(".recipe-content").length / pageSize;
 
