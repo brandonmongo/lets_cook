@@ -60,7 +60,7 @@ After logging into the site they are directed  to their profile page where they 
 
 ![profile](mockup/images/profile_page.jpg)
 
-When an account holder clicks on the add recipe it take the users to a add recipe form where  if they wish to add an recipe they have to filling out all the inputs the form is asking, otherwise the recipe wont get added to the database and a promote telling the user they are need to fill out this field. For the fields such as tools, ingredients and preparations steps have an add button so the can add more than one field when needs be because as you can imagine recipes have need multiple ingredients, preparation steps and tools to cook the dish. When they have finished filling out the form the click on the add recipe button, where the user gets taken to the homepage with a message informing the user that the recipe has be added.
+When an account holder clicks on the add recipe it take the users to a add recipe form where  if they wish to add an recipe they have to filling out all the inputs the form is asking expect for the tools field in case no tools are needed for the recipe, otherwise the recipe wont get added to the database and a promote telling the user they are need to fill out this field. For the fields such as tools, ingredients and preparations steps have an add button so the can add more than one field when needs be because as you can imagine recipes have need multiple ingredients, preparation steps and tools to cook the dish. When they have finished filling out the form the click on the add recipe button, where the user gets taken to the homepage with a message informing the user that the recipe has be added.
 
 ![add recipe](mockup/images/add_recipe_form.jpg)
 ![add recipe2](mockup/images/add_recipe_form2.jpg)
