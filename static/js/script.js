@@ -2,6 +2,7 @@ $(document).ready(function(){
     $('.sidenav').sidenav();
     $('select').formSelect();
 
+    // add buttons
     addingIngredindients()
     function addingIngredindients(){
          let i = 1 
@@ -20,7 +21,6 @@ $(document).ready(function(){
     function addTools() {
         let i = 1
         $("#add_tools").click(function() { 
-            // return console.log("button clicked")
             i++;
             console.log(i)
             $("#tools-table").append('<tr id="tooltb'+i+'"> <td><input id="tools" type="text" name="tools[]" class="validate input-block" required/></td><td><button class="btn waves-effect waves-light btn-remove" type="button" id="'+i+'">X</button></td></tr>');
