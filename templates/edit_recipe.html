@@ -18,14 +18,14 @@
                 <table id="tools-table" class="responsive-table">
                     <tr class="table-width">
                         <i class="fas fa-egg prefix"></i>
-                        <td><input id="tools" type="text" name="tools[]" class="validate  input-block" placeholder="Add Tools Needed" value="{{ viewed_recipe.tools[0] }}" required> </td>
+                        <td><input id="tools" type="text" name="tools[]" class="validate  input-block" placeholder="Add Tools Needed" value="{{ viewed_recipe.tools[0] }}"></td>
                         <td>
                             <button class="btn waves-effect waves-light" type="button" id="add_tools">Add Tool
                             </button>   
                         </td>
                         {% for tool in viewed_recipe.tools[1:] %}
                         <tr id="tooltb1"> 
-                            <td><input id="tools" type="text" name="tools[]" class="validate input-block" value="{{ tool }}" required/></td>
+                            <td><input id="tools" type="text" name="tools[]" class="validate input-block" value="{{ tool }}"/></td>
                             <td><button class="btn waves-effect waves-light btn-remove" type="button" id="1">X</button></td>
                         </tr>
                         {% endfor %}
