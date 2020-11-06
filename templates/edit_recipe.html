@@ -30,7 +30,7 @@
                         <i class="fas fa-egg prefix"></i>
                         <td><input id="tools" type="text" name="tools[]" class="validate  input-block" placeholder="Add Tools Needed" value="{{ viewed_recipe.tools[0] }}" required> </td>
                         <td>
-                            <button class="btn waves-effect waves-light right" type="button" id="add_tools">Add Tool
+                            <button class="btn waves-effect waves-light" type="button" id="add_tools">Add Tool
                             </button>   
                         </td>
                         {% for tool in viewed_recipe.tools[1:] %}
@@ -48,7 +48,7 @@
                         <i class="fas fa-drumstick-bite prefix"></i>
                         <td><input id="ingredient" type="text" name="ingredients[]" class="validate input-block" placeholder="Add Ingredients" value="{{ viewed_recipe.ingredients[0] }}" required></td>
                         <td>
-                            <button type="button" class="btn waves-effect waves-light right"  id="add_ing" >Add Ingredients
+                            <button type="button" class="btn waves-effect waves-light"  id="add_ing" >Add Ingredients
                             </button>
                         </td>
                         {% for ingredient in viewed_recipe.ingredients[1:] %}
@@ -67,7 +67,7 @@
                         {{- viewed_recipe.preparation[0] -}}
                         </textarea></td>
                         <td>
-                            <button class="btn waves-effect waves-light right" type="button"  id="add_prep">Add Preparation Steps
+                            <button class="btn waves-effect waves-light" type="button"  id="add_prep">Add Preparation Steps
                             </button>  
                         </td>
                         {% for step in viewed_recipe.preparation[1:] %}

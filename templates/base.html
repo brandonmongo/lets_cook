@@ -30,14 +30,13 @@
                         <li><a href="{{ url_for('register') }}">Register</a></li>
                         <li><a href="{{ url_for('login') }}">Log In</a></li>
                     {% endif %} 
-                    <li><a href="#">About Us</a></li>
                 </ul>
             </div>
         </nav>
     </div>
    <!--Moblie NavBar-->
     <ul class="sidenav" id="mobile-demo">
-        <li><h4>Let's Cook</h4></li>
+        <li class="mlogo"><h4 class="moblie-logo white-text logo">Let's Cook</h4></li>
         <li><a href="{{ url_for('all_recipes') }}">View Recipes</a></li>
         {% if session.current_user %}
             <li><a href="{{ url_for('add_recipe') }}">Add A Recipe</a></li>
@@ -47,7 +46,6 @@
             <li><a href="{{ url_for('register') }}">Register</a></li>
             <li><a href="{{ url_for('login') }}">Log In</a></li>
         {% endif %} 
-        <li><a href="#">About Us</a></li>
     </ul>
 
     <header>
