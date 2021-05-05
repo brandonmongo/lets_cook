@@ -1,6 +1,7 @@
 # Let’s Cook
 This website is an online cookbook database where people that are looking for recipes can find them. To users that register an account on the website have the ability to add their own recipes to the database for everyone  and themselves to view plus having the option to edit or if for any reason they don’t want their recipe on the database allowing them to delete it. Giving the user full CRUD access.
 
+[Live Demo](https://brandon-lets-cook.herokuapp.com/)
 ## UX
 
 ## User Stories 
